@@ -56,8 +56,6 @@ to quickly create a Cobra application.`,
 			switch payload {
 			case "time":
 				err = m.Send(fmt.Sprintf("%s", currentTimeFormatted))
-			default:
-				err = m.Send(fmt.Sprintf("Hello I'm Kbot %s!", appVersion))
 
 			}
 
