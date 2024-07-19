@@ -1,6 +1,5 @@
 /*
 Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
@@ -11,7 +10,7 @@ import (
 )
 
 // Adds variable appVersion to display the current version.
-var appVersion="Version"
+var appVersion = "Version"
 
 // versionCmd represents the version command
 var versionCmd = &cobra.Command{
