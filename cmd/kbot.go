@@ -20,9 +20,9 @@ var (
 
 // kbotCmd represents the kbot command
 var kbotCmd = &cobra.Command{
-	Use:   "kbot",
+	Use:     "kbot",
 	Aliases: []string{"start"},
-	Short: "A brief description of your command",
+	Short:   "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -49,13 +49,17 @@ to quickly create a Cobra application.`,
 			payload := m.Message().Payload
 
 			// Adds ability to display current date.
-			loc, err := time.LoadLocation("EET")
+			loc, locErr := time.LoadLocation("EET")
+			if locErr != nil {
+				log.Fatalf("Something went wrong... Please check an error: %s", locErr)
+			}
+
 			currentTime := time.Now().In(loc)
 			currentTimeFormatted := currentTime.Format("Monday, January 2, 2006 15:04:05")
 
 			switch payload {
 			case "time":
-				err = m.Send(fmt.Sprintf("%s", currentTimeFormatted))
+				err = m.Send(fmt.Sprintf("The current time in the Eastern Europe timezone: %s", currentTimeFormatted))
 
 			}
 
